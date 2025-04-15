@@ -177,12 +177,22 @@ GET /dvwa/vulnerabilities/brute/?username=admin&password=123&Login=Login HTTP/1.
 
 6. **Launch Attack:**
    - Click **Start Attack**
-   - Look for a successful login by identifying different **status**, **response length**, or **text string** (like “Welcome to the password protected area admin”).
+   - Look through the results for a request with a noticeably **larger content length**.
+   - This indicates a different (likely successful) response compared to the others.
+
+![image](https://github.com/user-attachments/assets/4e197ec6-6935-4dce-b8c1-7ce8955382b6)
 
 ---
 
-### Result:
+### Verifying the Successful Login:
 
-- **Valid Credentials Found:**
-  - **Username:** `admin`
-  - **Password:** `password1` *(based on example)*
+- **Steps to Verify:**
+  1. Right-click the highlighted response.
+  2. Select **"Show response in browser"**.
+  3. Copy the temporary URL provided by Burp.
+  4. Paste the URL into your browser.
+
+![image](https://github.com/user-attachments/assets/4b330a2f-2821-48d0-a296-d59b40e176b7)
+
+![image](https://github.com/user-attachments/assets/f85005d9-de50-4c18-91f2-dc809597d9b2)
+
