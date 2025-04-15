@@ -1,40 +1,71 @@
-# Network Protocol Vulnerability Lab Walkthrough
+# Lab 1: Cryptographic Attacks – Brute Force & Traffic Analysis
+
+**Time Allocated:** 3 Hours  
+**Total Marks:** 15  
+**Protocols:** FTP, TELNET, SSH, HTTP  
+**Tools Used:** Hydra, Burp Suite, Wireshark, tcpdump, Medusa, NetExec
+
+---
 
 ## A. Objective
 
-The goal of this lab is to explore the vulnerabilities of common network protocols (FTP, TELNET, SSH, HTTP) by performing brute force attacks to recover passwords and then using those credentials to sniff network traffic. You will also analyze the security of these protocols and propose mitigation strategies.
+To explore vulnerabilities in common network protocols (FTP, TELNET, SSH, HTTP) by:
+
+- Performing brute force attacks to recover passwords.
+- Sniffing traffic using recovered credentials.
+- Analyzing security of plaintext vs encrypted protocols.
+- Proposing effective mitigation strategies.
+
+---
 
 ## B. Lab Tasks
 
-### 1. Enumerate the Vulnerable VM to Discover Usernames
-**Objective**: Identify potential usernames for brute force attacks.
+---
 
-**Steps**:
-1. **Scan the Target VM**: We first performed an `nmap` scan to identify open ports for FTP, SSH, TELNET, and HTTP (ports 21, 22, 23, and 80).
-   - Example `nmap` command:
+### 1. Username Enumeration
+
+**Goal:** Identify valid usernames to perform brute force attacks.
+
+**Tools:** `nmap` & `enum4linux`
+
+**Commands:**
 ```bash
-     nmap -sV -p 21,22,23,80 192.168.X.X
+nmap -sV -p 21,23,22,80 <target-ip>
 ```
 
+![image](https://github.com/user-attachments/assets/6d091b5a-a442-4d59-abbb-2ccec9e510b0)
 
-### 2. Perform Brute Force Attacks
+```bash
+enum4linux -a <target-ip>
+```
+**Username Found:**
 
-#### 2.1 FTP, TELNET, and SSH
+![image](https://github.com/user-attachments/assets/43634cc6-0f64-4e6c-9266-0fb8b6bc5441)
 
-**Assumed Username**: Based on enumeration or hints from the VM, we assumed the username is `msfadmin`.
+**Result:**  
+The output from `enum4linux` revealed the following username:
 
-**Tool Used**: Hydra & NetExec 
-**Wordlist Used**: `/usr/share/wordlists/rockyou.txt
+- `msfadmin`
 
-**Commands Used**:
+This username is commonly found on Metasploitable2 and was confirmed through SMB enumeration using `enum4linux`.
 
-- **FTP**:
-  ```bash
-  hydra -l msfadmin -P /usr/share/wordlists/rockyou.txt ftp://192.168.X.X
-  ```
-- **TELNET**:
-  ```bash
-  hydra -l msfadmin -P /usr/share/wordlists/rockyou.txt telnet://192.168.X.X
-  ```
-- **SSH**:
-  
+---
+
+## 2. Brute Force Attacks
+
+---
+
+### 2.1 FTP, TELNET, SSH
+
+**Tool Used:** `Hydra`  
+**Password List:** `password.txt`
+
+**Commands:**
+
+- **FTP Brute Force**
+```bash
+hydra -l msfadmin -P /usr/share/wordlists/password.txt ftp://192.168.43.137
+```
+ **Valid Credentials Found:**
+![image](https://github.com/user-attachments/assets/411949ea-00e7-4afa-afa9-306550ba8580)
+
