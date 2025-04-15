@@ -327,7 +327,6 @@ C. Analysis
 | FTP | ✅ Visible in traffic | ❌ None |
 | TELNET | ✅ Visible in traffic | ❌ None |
 | SSH | ❌ Not visible | ✅ Strong |
-| HTTP (DVWA) | ✅ (when intercepted) | ❌ (DVWA intentionally insecure) |
 
 * * * * *
 
