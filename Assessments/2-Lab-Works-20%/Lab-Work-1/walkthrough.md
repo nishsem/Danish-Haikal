@@ -100,7 +100,7 @@ medusa -h 192.168.43.137 -u msfadmin -P /usr/share/wordlists/password.txt -M ssh
  
  ![image](https://github.com/user-attachments/assets/b1f433be-8c77-45f9-bc40-05d92186c266)
 
-## 2.2 HTTP Brute Force – DVWA Module
+## 2.2 HTTP Brute Force
 
 **Tool Used:** `Burp Suite → Intruder`  
 **Target URL:** `http://192.168.43.137/dvwa/vulnerabilities/brute/`  
@@ -196,3 +196,10 @@ GET /dvwa/vulnerabilities/brute/?username=admin&password=123&Login=Login HTTP/1.
 
 ![image](https://github.com/user-attachments/assets/f85005d9-de50-4c18-91f2-dc809597d9b2)
 
+- **Expected Output:**
+  You should see the message:  
+  > **Welcome to the password protected area admin**
+
+![image](https://github.com/user-attachments/assets/cd1ae582-2e05-4d24-9c23-05a1f6f7fe67)
+
+---
