@@ -279,4 +279,42 @@ telnet || tcp.port == 23
 
 ![image](https://github.com/user-attachments/assets/dae81cb3-3fed-455c-84bd-a114f212e7fe)
 
+### 3.3 SSH Traffic
 
+1.  **Start an SSH session** from your terminal:
+
+    `ssh -oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa msfadmin@192.168.43.137`
+
+    -   **Username**: `msfadmin`
+
+    -   **Password**: `msfadmin`
+
+    > 🛑 If you see this error:\
+    > `Unable to negotiate with 192.168.43.137 port 22: no matching host key type found. Their offer: ssh-rsa,ssh-dss`\
+    > Use the command above to force use of `ssh-rsa` which is supported by Metasploitable2.
+
+![image](https://github.com/user-attachments/assets/f1ce378f-eaa1-4ae1-8f19-6d59ecbfce6d)
+
+2.  **Open Wireshark** on your attacker machine.
+
+3.  **Apply the filter** to display only SSH traffic:
+
+```
+ssh || tcp.port == 22
+```
+
+![image](https://github.com/user-attachments/assets/c03738f3-09db-47ee-aa80-3f0a02aa85dd)
+
+4.  **In Wireshark**:
+
+    -   Observe the captured SSH packets.
+
+    -   Note that the contents are **fully encrypted**.
+
+    -   No credentials or commands can be read in the packet data.
+
+5.  **Optional**: Right-click on any SSH packet → `Follow` → `TCP Stream`.
+
+    -   The stream will display **garbled** or **binary** data, confirming encryption.
+
+![image](https://github.com/user-attachments/assets/29cabe20-b802-4330-9ad2-4ac6c7438b86)
