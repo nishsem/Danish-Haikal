@@ -151,13 +151,31 @@ medusa -h 192.168.43.137 -u msfadmin -P /usr/share/wordlists/password.txt -M ssh
 
 ![image](https://github.com/user-attachments/assets/eb905850-3271-4e17-a564-f5b683ab9c54)
 
-   - Set the attack type to **Sniper** or **Cluster Bomb**
-     - Example:  
-       - Payload 1: `admin` (fixed username)  
-       - Payload 2: `passwords from your list`
+   - Set the attack type to **Cluster Bomb**
+
+![image](https://github.com/user-attachments/assets/9f3d8bba-3344-48d1-b655-77f4f7643970)
+
+5. **Set Payload Positions:**
+   - In the request:
+
+![image](https://github.com/user-attachments/assets/505fd7b2-17f4-44b8-80f3-8934a41e3c03)
+
+```bash
+GET /dvwa/vulnerabilities/brute/?username=admin&password=123&Login=Login HTTP/1.1
+```
+     
+   - Highlight the value of `username` and `password` to mark them as payload positions.
+
+![image](https://github.com/user-attachments/assets/4ceaadc0-e776-46fd-8f53-73bdb4544257)
 
 5. **Load Password Wordlist:**
-   - Load a password list (e.g., `/usr/share/wordlists/rockyou.txt`) in **Payload Options**
+   - Load username and password list in **Payload Options**
+
+
+![image](https://github.com/user-attachments/assets/e508402d-edfe-402e-9332-97c918736df8)
+
+![image](https://github.com/user-attachments/assets/3a8bd2ad-66c8-46e1-896e-dc4bf000b9fa)
+
 
 6. **Launch Attack:**
    - Click **Start Attack**
