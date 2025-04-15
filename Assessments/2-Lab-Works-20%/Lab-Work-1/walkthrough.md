@@ -30,13 +30,13 @@ To explore vulnerabilities in common network protocols (FTP, TELNET, SSH, HTTP) 
 
 **Commands:**
 ```bash
-nmap -sV -p 21,23,22,80 <target-ip>
+nmap -sV -p 21,23,22,80 192.168.43.137
 ```
 
 ![image](https://github.com/user-attachments/assets/6d091b5a-a442-4d59-abbb-2ccec9e510b0)
 
 ```bash
-enum4linux -a <target-ip>
+enum4linux -a 192.168.43.137
 ```
 **Username Found:**
 
