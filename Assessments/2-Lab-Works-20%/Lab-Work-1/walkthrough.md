@@ -208,7 +208,7 @@ GET /dvwa/vulnerabilities/brute/?username=admin&password=123&Login=Login HTTP/1.
 **Goal:** Use Wireshark to analyze how credentials are transmitted over different protocols, comparing plaintext and encrypted traffic.
 
 **Tool Used:** Wireshark  
-**Target IP:** `192.168.43.137` (adjust to match your lab)
+**Target IP:** `192.168.43.137`
 
 ---
 
@@ -246,4 +246,37 @@ ftp || tcp.port == 21
 6. The TCP stream will show the full session including credentials:
 
 ![image](https://github.com/user-attachments/assets/398d62c8-c7ce-4e7c-9be3-fee95262bd6c)
+
+### 3.2 Capturing TELNET Credentials
+
+1. On the attacker's terminal, connect to the TELNET service adn enter a command:
+
+```bash
+telnet 192.168.43.137
+```
+- Username: `msfadmin`
+
+- Password: `msfadmin`
+
+![image](https://github.com/user-attachments/assets/ee1ddec3-43ac-4586-b5e0-e203927bb35e)
+
+![image](https://github.com/user-attachments/assets/f09e689c-a26d-41a7-a4d1-2ca258d93981)
+
+2. While typing the credentials, each keystroke is transmitted and captured in plaintext.
+
+3. In Wireshark, apply the filter:
+```bash
+telnet || tcp.port == 23
+```
+
+![image](https://github.com/user-attachments/assets/4725d2e9-1aff-4765-addd-7d79221f817e)
+
+- Look through the packet list for TELNET traffic.
+
+- Right-click → Follow → TCP Stream
+
+![image](https://github.com/user-attachments/assets/de8e502e-9986-47eb-9935-597530f40635)
+
+![image](https://github.com/user-attachments/assets/dae81cb3-3fed-455c-84bd-a114f212e7fe)
+
 
