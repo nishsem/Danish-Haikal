@@ -99,3 +99,74 @@ medusa -h 192.168.43.137 -u msfadmin -P /usr/share/wordlists/password.txt -M ssh
  **Valid Credentials Found:**
  
  ![image](https://github.com/user-attachments/assets/b1f433be-8c77-45f9-bc40-05d92186c266)
+
+## 2.2 HTTP Brute Force – DVWA Module
+
+**Tool Used:** `Burp Suite → Intruder`  
+**Target URL:** `http://192.168.43.137/dvwa/vulnerabilities/brute/`  
+
+---
+
+### Steps:
+
+1. **Access DVWA:**
+   - Go to `http://192.168.43.137/`
+   - Click on **DVWA**
+
+![image](https://github.com/user-attachments/assets/a99c9620-af95-404b-a6ce-427a2160684c)
+
+   - Login using the default credentials:
+     - **Username:** `admin`
+     - **Password:** `password`
+    
+![image](https://github.com/user-attachments/assets/19f24102-768e-4415-8c7d-c189121b4220)
+
+   - Navigate to **DVWA Security** → Set **Security Level** to **Low**
+
+![image](https://github.com/user-attachments/assets/953a1295-dab6-4920-ae5a-f94193eac92d)
+
+2. **Navigate to Brute Force Page:**
+   - Go to **Brute Force**
+
+![image](https://github.com/user-attachments/assets/43c59070-1e50-46f4-9b4b-05decae6322e)
+
+   - This is a page with a form to enter **username** and **password** to brute-force a login system.
+
+3. **Intercept with Burp Suite:**
+   - Set your browser to use Burp's proxy.
+
+![image](https://github.com/user-attachments/assets/14422fb8-712b-4380-a4bd-3d4276193f59)
+
+   - open burpsuite and turn on intercept option
+
+![image](https://github.com/user-attachments/assets/3aeaf266-46f7-47ba-b2f9-00c536421afb)
+
+   - Fill in sample credentials (e.g., `admin:1234`) and submit the form.
+   - Burp will intercept the POST request.
+
+![image](https://github.com/user-attachments/assets/468ec129-d198-48e8-9369-3f9a1ceb6e62)
+
+4. **Send to Intruder:**
+   - Right-click the intercepted request → **Send to Intruder**
+
+![image](https://github.com/user-attachments/assets/eb905850-3271-4e17-a564-f5b683ab9c54)
+
+   - Set the attack type to **Sniper** or **Cluster Bomb**
+     - Example:  
+       - Payload 1: `admin` (fixed username)  
+       - Payload 2: `passwords from your list`
+
+5. **Load Password Wordlist:**
+   - Load a password list (e.g., `/usr/share/wordlists/rockyou.txt`) in **Payload Options**
+
+6. **Launch Attack:**
+   - Click **Start Attack**
+   - Look for a successful login by identifying different **status**, **response length**, or **text string** (like “Welcome to the password protected area admin”).
+
+---
+
+### Result:
+
+- **Valid Credentials Found:**
+  - **Username:** `admin`
+  - **Password:** `password1` *(based on example)*
