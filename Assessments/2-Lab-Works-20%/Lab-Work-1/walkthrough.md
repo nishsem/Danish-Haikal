@@ -322,11 +322,17 @@ ssh || tcp.port == 22
 C. Analysis
 --------------
 
-| Protocol | Credential Exposure | Encryption |
-| --- | --- | --- |
-| FTP | ✅ Visible in traffic | ❌ None |
-| TELNET | ✅ Visible in traffic | ❌ None |
-| SSH | ❌ Not visible | ✅ Strong |
+| **Protocol**  | **Credential Exposure**          | **Encryption**                    |
+|---------------|----------------------------------|-----------------------------------|
+| **FTP**       | ✅ Visible in traffic            | ❌ None                           |
+| **TELNET**    | ✅ Visible in traffic            | ❌ None                           |
+| **SSH**       | ❌ Not visible                   | ✅ Strong                         |
+| **HTTP (DVWA)**| ✅ (when intercepted)           | ❌ (DVWA intentionally insecure)  |
+
+### Conclusion:
+- **FTP** and **TELNET** expose credentials in clear text, making them highly vulnerable to sniffing attacks.
+- **SSH** provides strong encryption, keeping credentials secure during transmission.
+- **HTTP (DVWA)** is insecure by default, exposing credentials when intercepted, emphasizing the importance of using **HTTPS** to protect data.
 
 * * * * *
 
