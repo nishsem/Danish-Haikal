@@ -318,3 +318,25 @@ ssh || tcp.port == 22
     -   The stream will display **garbled** or **binary** data, confirming encryption.
 
 ![image](https://github.com/user-attachments/assets/29cabe20-b802-4330-9ad2-4ac6c7438b86)
+
+C. Analysis
+--------------
+
+| Protocol | Credential Exposure | Encryption |
+| --- | --- | --- |
+| FTP | ✅ Visible in traffic | ❌ None |
+| TELNET | ✅ Visible in traffic | ❌ None |
+| SSH | ❌ Not visible | ✅ Strong |
+| HTTP (DVWA) | ✅ (when intercepted) | ❌ (DVWA intentionally insecure) |
+
+* * * * *
+
+D. Mitigation Strategies
+----------------------------
+
+| Threat | Recommendation |
+| --- | --- |
+| Brute Force | Use account lockout, rate limiting, and CAPTCHA |
+| Plaintext Transmission | Replace FTP/TELNET with SFTP/SSH |
+| Weak HTTP Auth | Use HTTPS with strong backend auth & WAF |
+| Username Enumeration | Disable verbose error messages in login |
