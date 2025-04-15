@@ -158,7 +158,7 @@ medusa -h 192.168.43.137 -u msfadmin -P /usr/share/wordlists/password.txt -M ssh
 5. **Set Payload Positions:**
    - In the request:
 
-![image](https://github.com/user-attachments/assets/505fd7b2-17f4-44b8-80f3-8934a41e3c03)
+![image](https://github.com/user-attachments/assets/84b76575-1742-4088-89b5-4c15dedf074e)
 
 ```bash
 GET /dvwa/vulnerabilities/brute/?username=admin&password=123&Login=Login HTTP/1.1
@@ -166,16 +166,14 @@ GET /dvwa/vulnerabilities/brute/?username=admin&password=123&Login=Login HTTP/1.
      
    - Highlight the value of `username` and `password` to mark them as payload positions.
 
-![image](https://github.com/user-attachments/assets/4ceaadc0-e776-46fd-8f53-73bdb4544257)
 
 5. **Load Password Wordlist:**
    - Load username and password list in **Payload Options**
 
+![image](https://github.com/user-attachments/assets/01899074-cc35-4957-bf7a-839068202f25)
 
-![image](https://github.com/user-attachments/assets/e508402d-edfe-402e-9332-97c918736df8)
 
-![image](https://github.com/user-attachments/assets/3a8bd2ad-66c8-46e1-896e-dc4bf000b9fa)
-
+![image](https://github.com/user-attachments/assets/da4c4e51-2ed5-4047-ba62-0094e19a0eb3)
 
 6. **Launch Attack:**
    - Click **Start Attack**
