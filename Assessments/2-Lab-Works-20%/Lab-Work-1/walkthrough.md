@@ -203,3 +203,47 @@ GET /dvwa/vulnerabilities/brute/?username=admin&password=123&Login=Login HTTP/1.
 ![image](https://github.com/user-attachments/assets/cd1ae582-2e05-4d24-9c23-05a1f6f7fe67)
 
 ---
+## 3. Sniffing and Traffic Analysis
+
+**Goal:** Use Wireshark to analyze how credentials are transmitted over different protocols, comparing plaintext and encrypted traffic.
+
+**Tool Used:** Wireshark  
+**Target IP:** `192.168.43.137` (adjust to match your lab)
+
+---
+
+### 3.1 Capturing FTP Credentials
+
+1. Open **Wireshark** on your attacker machine.
+2. Start capturing on the interface connected to the target network.
+
+![image](https://github.com/user-attachments/assets/05d4965a-dfa6-4433-bae6-53354f200bfd)
+
+3. On the attacker's terminal, connect to the FTP service and enter a command like `ls`:
+```bash
+ftp 192.168.43.137
+```
+- Username: `msfadmin`
+
+- Password: `msfadmin`
+
+![image](https://github.com/user-attachments/assets/303a950a-ea44-413c-83a7-94404d3e23c2)
+
+4. Apply filter on Wireshark:
+```bash
+ftp || tcp.port == 21
+```
+
+![image](https://github.com/user-attachments/assets/9aef846e-049f-4951-ac76-41f63c88238e)
+
+5. In Wireshark:
+
+- Locate a packet with USER msfadmin in the Info column.
+- Right-click it → Follow → TCP Stream.
+
+![image](https://github.com/user-attachments/assets/1a567d3a-0df6-4772-8d88-fafc66f7c4da)
+
+6. The TCP stream will show the full session including credentials:
+
+![image](https://github.com/user-attachments/assets/398d62c8-c7ce-4e7c-9be3-fee95262bd6c)
+
