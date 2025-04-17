@@ -1,4 +1,4 @@
-#Lab 1: Cryptographic Attacks: Brute Force and Traffic Analysis on Network Protocols
+# Lab 1: Cryptographic Attacks: Brute Force and Traffic Analysis on Network Protocols
 
 ## Time Allocated: 3 hours
 ## Total Marks: 15
