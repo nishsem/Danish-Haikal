@@ -319,24 +319,16 @@ ssh || tcp.port == 22
 
 ![image](https://github.com/user-attachments/assets/29cabe20-b802-4330-9ad2-4ac6c7438b86)
 
-C. Analysis
---------------
+## C. Analyze Problems Encounter
 
-| **Protocol**  | **Credential Exposure**          | **Encryption**                    |
-|---------------|----------------------------------|-----------------------------------|
-| **FTP**       | ✅ Visible in traffic            | ❌ None                           |
-| **TELNET**    | ✅ Visible in traffic            | ❌ None                           |
-| **SSH**       | ❌ Not visible                   | ✅ Strong                         |
-| **HTTP (DVWA)**| ✅ (when intercepted)           | ❌ (DVWA intentionally insecure)  |
+#### Issues Faced During Brute Force Attacks
 
-### Conclusion:
-- **FTP** and **TELNET** expose credentials in clear text, making them highly vulnerable to sniffing attacks.
-- **SSH** provides strong encryption, keeping credentials secure during transmission.
-- **HTTP (DVWA)** is insecure by default, exposing credentials when intercepted, emphasizing the importance of using **HTTPS** to protect data.
+- **Enumeration**: On Metasploitable 2, there were too many usernames, so it was important to carefully check valid usernames.
+- **BurpSuite Bruteforce**: Had to be very careful with payload positions in Burp Intruder. A mistake in setting the payload position led to incorrect attack attempts.
 
 * * * * *
 
-D. Mitigation Strategies
+## D. Mitigation Strategies
 ----------------------------
 
 ## Mitigation Strategies
