@@ -1,5 +1,5 @@
-# Time Allocated: 3 hours
-# Total Marks: 15
+## Time Allocated: 3 hours
+## Total Marks: 15
 
 ---
 
