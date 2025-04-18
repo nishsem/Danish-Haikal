@@ -3,7 +3,7 @@
 **Time Allocated:** 3 Hours  
 **Total Marks:** 15  
 **Protocols:** FTP, TELNET, SSH, HTTP  
-**Tools Used:** Hydra, Burp Suite, Wireshark
+**Tools Used:** Hydra, Medusa, Burp Suite, Wireshark
 
 ---
 
