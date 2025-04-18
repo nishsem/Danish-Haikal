@@ -337,6 +337,6 @@ ssh || tcp.port == 22
 |------------------------------------------------|------------------------------------------------------------------------------------------------|
 | **Brute Force Attacks**                        | Stop users from trying too many wrong passwords. Lock the account or add a delay after several failed tries. Use CAPTCHA. |
 | **Plaintext Protocols (FTP, TELNET)**          | Don’t use FTP or TELNET because they send data without protection. Use **SFTP** or **SSH** instead, which are encrypted and safe. |
-| **Weak Login Pages (like DVWA HTTP)**          | Use **HTTPS** so data is protected while moving on the internet. Also, use strong passwords and security tools like a firewall. |
+| **Weak Login Pages (like DVWA HTTP)**          | Use **HTTPS** so data is protected while moving on the internet. |
 | **Username is Easy to Find (Enumeration)**     | Don’t show error messages that say if a username is correct or not. Use a general message like “Invalid login” for all failed logins. |
 
