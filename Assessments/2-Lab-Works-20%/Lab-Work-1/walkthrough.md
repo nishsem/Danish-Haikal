@@ -59,7 +59,8 @@ This username is commonly found on Metasploitable2 and was confirmed through SMB
 
 - **FTP Brute Force**
 
-**Tool Used:** `Hydra`  
+**Tool Used:** `Hydra`
+**Username:** `msfadmin`
 **Password List:** `password.txt`
 
 **Commands:**
