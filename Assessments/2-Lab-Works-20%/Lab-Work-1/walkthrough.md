@@ -325,6 +325,13 @@ ssh || tcp.port == 22
 
 - **Enumeration**: On Metasploitable 2, there were too many usernames, so it was important to carefully check valid usernames.
 - **BurpSuite Bruteforce**: Had to be very careful with payload positions in Burp Intruder. A mistake in setting the payload position led to incorrect attack attempts.
+- **Metasploitable2 uses an older SSH server version** that may not be compatible with newer OpenSSH clients.  
+  To connect successfully, you may need to use the following command:
+  
+  ```bash
+  ssh -oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa username@ip
+  ```
+  This forces the SSH client to accept the older `ssh-rsa` algorithm, which is deprecated in recent OpenSSH versions.  
 
 * * * * *
 
